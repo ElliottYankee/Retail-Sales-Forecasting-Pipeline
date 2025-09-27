@@ -16,7 +16,7 @@ def load_and_clean_data(file_path: str) -> pd.DataFrame:
     df = pd.read_csv(file_path)
     df['Date'] = pd.to_datetime(df['Date'])
     
-    # Apply your data quality fixes
+    # Applying data quality fixes found in dataset overview notebook
     df = df.drop(['Demand Forecast'], axis=1, errors='ignore')
     df['Season'] = df['Date'].dt.month.map(assign_proper_seasons)
     
