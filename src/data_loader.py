@@ -41,7 +41,7 @@ def aggregate_to_store_category(df: pd.DataFrame) -> pd.DataFrame:
         'Competitor Pricing': 'mean'
     }).reset_index()
     
-    # Rename columns for consistency
+    # Renaming columns for consistency
     agg_df.columns = ['Date', 'Store ID', 'Category', 'Region',
                       'Inventory Level', 'Units Sold', 'Units Ordered', 'Average Price', 'Average Discount', 'Weather Condition',
                       'Holiday/Promotion', 'Competitor Pricing']
@@ -51,7 +51,7 @@ def aggregate_to_store_category(df: pd.DataFrame) -> pd.DataFrame:
     return agg_df
 
 if __name__ == "__main__":
-     # Get project root (two levels up from this file)
+     # Getting project root (two levels up from this file)
     project_root = Path(__file__).parent.parent
     raw_file_path = project_root / 'data' / 'raw' / 'retail_store_inventory.csv'
     
