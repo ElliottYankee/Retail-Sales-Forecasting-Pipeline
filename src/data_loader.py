@@ -55,10 +55,21 @@ if __name__ == "__main__":
     project_root = Path(__file__).parent.parent
     raw_file_path = project_root / 'data' / 'raw' / 'retail_store_inventory.csv'
     
+    # Running data cleansing and aggregation
     cleaned_df = load_and_clean_data(str(raw_file_path))
     aggregated_df = aggregate_to_store_category(cleaned_df)
+
+    # Checking if aggregation worked correctly
+    print(f"\nUnique stores: {aggregated_df['Store ID'].unique()}")
+    print(f"Total records: {len(aggregated_df)}")
+    print(f"Date range: {aggregated_df['Date'].min()} to {aggregated_df['Date'].max()}")
+
+    # Checking store distribution
+    print("\nRecords per store:")
+    print(aggregated_df['Store ID'].value_counts().sort_index())
     
-    print("Cleaned Data Sample:")
-    print(cleaned_df.head())
+    # Displaying samples of cleaned and aggregated data
+    print(f"\nCleaned Data Sample ({len(cleaned_df.columns)} columns):")
+    print(cleaned_df.head(15))
     print(f"\nAggregated Data Sample ({len(aggregated_df.columns)} columns):")
-    print(aggregated_df.head(12))
+    print(aggregated_df.head(15))
