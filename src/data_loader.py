@@ -1,4 +1,5 @@
 import pandas as pd
+from pathlib import Path
 import logging
 
 logger = logging.getLogger(__name__)
@@ -30,20 +31,34 @@ def load_and_clean_data(file_path: str) -> pd.DataFrame:
 def aggregate_to_store_category(df: pd.DataFrame) -> pd.DataFrame:
     """Aggregate product-level data to store-category level."""
     agg_df = df.groupby(['Date', 'Store ID', 'Category', 'Region']).agg({
-        'Units Sold': 'sum',
         'Inventory Level': 'sum',
+        'Units Sold': 'sum',
+        'Units Ordered': 'sum',
         'Price': 'mean',
         'Discount': 'mean',
-        'Holiday/Promotion': 'max',
         'Weather Condition': 'first',
+        'Holiday/Promotion': 'max',
         'Competitor Pricing': 'mean'
     }).reset_index()
     
     # Rename columns for consistency
-    agg_df.columns = ['Date', 'Store_ID', 'Category', 'Region', 'Units_Sold',
-                      'Inventory_Level', 'Avg_Price', 'Avg_Discount',
-                      'Has_Promotion', 'Weather_Condition', 'Competitor_Price']
+    agg_df.columns = ['Date', 'Store ID', 'Category', 'Region',
+                      'Inventory Level', 'Units Sold', 'Units Ordered', 'Average Price', 'Average Discount', 'Weather Condition',
+                      'Holiday/Promotion', 'Competitor Pricing']
     
     logger.info(f"Aggregated to {len(agg_df):,} store-category records")
-    
+
     return agg_df
+
+if __name__ == "__main__":
+     # Get project root (two levels up from this file)
+    project_root = Path(__file__).parent.parent
+    raw_file_path = project_root / 'data' / 'raw' / 'retail_store_inventory.csv'
+    
+    cleaned_df = load_and_clean_data(str(raw_file_path))
+    aggregated_df = aggregate_to_store_category(cleaned_df)
+    
+    print("Cleaned Data Sample:")
+    print(cleaned_df.head())
+    print(f"\nAggregated Data Sample ({len(aggregated_df.columns)} columns):")
+    print(aggregated_df.head(12))
