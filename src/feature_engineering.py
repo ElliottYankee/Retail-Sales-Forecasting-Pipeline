@@ -45,9 +45,25 @@ def create_lag_features(df: pd.DataFrame) -> pd.DataFrame:
         # Growth rate: shows how much sales change week-over-week
         df.loc[mask, 'Sales Growth 7d'] = group['Units Sold'].pct_change(7)
 
-    # Fill NaN with 0 to represent no history
+    # Filling NaN with 0 to represent no history
     lag_cols = [col for col in df.columns if any(x in col for x in ['Lag ', 'MA ', 'Std ', 'Growth '])]
     df[lag_cols] = df[lag_cols].fillna(0)
+    
+    return df
+
+def create_business_features(df: pd.DataFrame) -> pd.DataFrame:
+    """Create business-relevant derived features."""
+    df = df.copy()
+
+    # Price competitiveness: Ratio > 1 = competitor is less expensive
+    df['Price_vs_Competitor'] = df['Avg_Price'] / (df['Competitor_Price'] + 0.01)
+    
+    # Inventory management: High value = overstock risk
+    df['Inventory_Days_Supply'] = df['Inventory_Level'] / (df['Units_Sold'] + 1)
+
+    # Weather impact score
+    weather_scores = {'Sunny': 1.05, 'Cloudy': 1.0, 'Rainy': 0.95, 'Snowy': 0.90}
+    df['Weather_Impact'] = df['Weather_Condition'].map(weather_scores)
     
     return df
 
