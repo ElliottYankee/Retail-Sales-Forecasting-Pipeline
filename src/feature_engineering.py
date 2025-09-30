@@ -15,20 +15,20 @@ def create_time_features(df: pd.DataFrame) -> pd.DataFrame:
     df['Quarter'] = df['Date'].dt.quarter
     
     # Binary flags
-    df['Is_Weekend'] = (df['DayOfWeek'] >= 5).astype(int)
-    df['Is_MonthEnd'] = df['Date'].dt.is_month_end.astype(int)
+    df['Is Weekend'] = (df['DayOfWeek'] >= 5).astype(int)
+    df['Is MonthEnd'] = df['Date'].dt.is_month_end.astype(int)
     
     # Cyclical encoding to capture circular nature of time
-    df['Month_Sin'] = np.sin(2 * np.pi * df['Month'] / 12)
-    df['Month_Cos'] = np.cos(2 * np.pi * df['Month'] / 12)
-    df['DayOfWeek_Sin'] = np.sin(2 * np.pi * df['DayOfWeek'] / 7)
-    df['DayOfWeek_Cos'] = np.cos(2 * np.pi * df['DayOfWeek'] / 7)
+    df['Month Sin'] = np.sin(2 * np.pi * df['Month'] / 12)
+    df['Month Cos'] = np.cos(2 * np.pi * df['Month'] / 12)
+    df['DayOfWeek Sin'] = np.sin(2 * np.pi * df['DayOfWeek'] / 7)
+    df['DayOfWeek Cos'] = np.cos(2 * np.pi * df['DayOfWeek'] / 7)
     
     return df
 
 def create_lag_features(df: pd.DataFrame) -> pd.DataFrame:
     """Create lag and rolling window features"""
-    df = df.copy().sort_values(['Store_ID', 'Category', 'Date'])
+    df = df.copy().sort_values(['Store ID', 'Category', 'Date'])
     
     for (store_id, category), group in df.groupby(['Store ID', 'Category']):
         mask = (df['Store ID'] == store_id) & (df['Category'] == category)
@@ -56,14 +56,25 @@ def create_business_features(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
 
     # Price competitiveness: Ratio > 1 = competitor is less expensive
-    df['Price_vs_Competitor'] = df['Avg_Price'] / (df['Competitor_Price'] + 0.01)
+    df['Price vs Competitor'] = df['Avg Price'] / (df['Competitor Price'] + 0.01)
     
     # Inventory management: High value = overstock risk
-    df['Inventory_Days_Supply'] = df['Inventory_Level'] / (df['Units_Sold'] + 1)
+    df['Inventory Days Supply'] = df['Inventory Level'] / (df['Units Sold'] + 1)
 
     # Weather impact score
     weather_scores = {'Sunny': 1.05, 'Cloudy': 1.0, 'Rainy': 0.95, 'Snowy': 0.90}
-    df['Weather_Impact'] = df['Weather_Condition'].map(weather_scores)
+    df['Weather Impact'] = df['Weather Condition'].map(weather_scores)
     
     return df
 
+def encode_categoricals(df: pd.DataFrame) -> pd.DataFrame:
+    """One-hot encode categorical variables."""
+    df = df.copy()
+    
+    # Encoding categoricals
+    for col in ['Category', 'Region', 'Weather Condition']:
+        if col in df.columns:
+            dummies = pd.get_dummies(df[col], prefix=col)
+            df = pd.concat([df, dummies], axis=1)
+    
+    return df
