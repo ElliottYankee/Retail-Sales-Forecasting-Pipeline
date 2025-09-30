@@ -35,9 +35,11 @@ def create_lag_features(df: pd.DataFrame) -> pd.DataFrame:
         
         # Lag features: gets sales for N days ago, useful for capturing time dependencies
         df.loc[mask, 'Sales Lag 7'] = group['Units Sold'].shift(7)
+        df.loc[mask, 'Sales Lag 30'] = group['Units Sold'].shift(30)
         
         # Rolling averages: gets average over the past N days to smooth out noise
         df.loc[mask, 'Sales MA 7'] = group['Units Sold'].rolling(7).mean()
+        df.loc[mask, 'Sales MA 30'] = group['Units Sold'].rolling(30).mean()
         
         # Rolling std: shows how volatile sales are, higher std = more unpredictable
         df.loc[mask, 'Sales Std 7'] = group['Units Sold'].rolling(7).std()
