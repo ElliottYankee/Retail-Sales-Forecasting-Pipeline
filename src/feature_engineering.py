@@ -52,7 +52,7 @@ def create_lag_features(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 def create_business_features(df: pd.DataFrame) -> pd.DataFrame:
-    """Create business-relevant derived features."""
+    """Create business-relevant derived features"""
     df = df.copy()
 
     # Price competitiveness: Ratio > 1 = competitor is less expensive
@@ -68,7 +68,7 @@ def create_business_features(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 def encode_categoricals(df: pd.DataFrame) -> pd.DataFrame:
-    """One-hot encode categorical variables."""
+    """One-hot encode categorical variables"""
     df = df.copy()
     
     # Encoding categoricals
@@ -76,5 +76,16 @@ def encode_categoricals(df: pd.DataFrame) -> pd.DataFrame:
         if col in df.columns:
             dummies = pd.get_dummies(df[col], prefix=col)
             df = pd.concat([df, dummies], axis=1)
+    
+    return df
+
+def create_all_features(df: pd.DataFrame) -> pd.DataFrame:
+    """Apply all feature engineering steps in sequence"""
+    df = df.copy()
+    
+    df = create_time_features(df)
+    df = create_lag_features(df)
+    df = create_business_features(df)
+    df = encode_categoricals(df)
     
     return df
