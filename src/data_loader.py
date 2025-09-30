@@ -33,7 +33,6 @@ def aggregate_to_store_category(df: pd.DataFrame) -> pd.DataFrame:
     agg_df = df.groupby(['Date', 'Store ID', 'Category', 'Region']).agg({
         'Inventory Level': 'sum',
         'Units Sold': 'sum',
-        'Units Ordered': 'sum',
         'Price': 'mean',
         'Discount': 'mean',
         'Weather Condition': 'first',
@@ -43,7 +42,7 @@ def aggregate_to_store_category(df: pd.DataFrame) -> pd.DataFrame:
     
     # Renaming columns for consistency
     agg_df.columns = ['Date', 'Store ID', 'Category', 'Region',
-                      'Inventory Level', 'Units Sold', 'Units Ordered', 'Average Price', 'Average Discount', 'Weather Condition',
+                      'Inventory Level', 'Units Sold', 'Average Price', 'Average Discount', 'Weather Condition',
                       'Holiday/Promotion', 'Competitor Pricing']
     
     # Rounding numeric columns to 2 decimal places for consistency
