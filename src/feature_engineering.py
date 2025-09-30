@@ -46,7 +46,7 @@ def create_lag_features(df: pd.DataFrame) -> pd.DataFrame:
         df.loc[mask, 'Sales Growth 7d'] = group['Units Sold'].pct_change(7)
 
     # Fill NaN with 0 to represent no history
-    lag_cols = [col for col in df.columns if any(x in col for x in ['Lag_', 'MA_', 'Std_', 'Growth_'])]
+    lag_cols = [col for col in df.columns if any(x in col for x in ['Lag ', 'MA ', 'Std ', 'Growth '])]
     df[lag_cols] = df[lag_cols].fillna(0)
     
     return df
