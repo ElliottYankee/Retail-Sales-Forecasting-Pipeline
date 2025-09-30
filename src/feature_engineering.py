@@ -23,6 +23,8 @@ def create_time_features(df: pd.DataFrame) -> pd.DataFrame:
     df['Month Cos'] = np.cos(2 * np.pi * df['Month'] / 12)
     df['DayOfWeek Sin'] = np.sin(2 * np.pi * df['DayOfWeek'] / 7)
     df['DayOfWeek Cos'] = np.cos(2 * np.pi * df['DayOfWeek'] / 7)
+
+    logger.info("Created time-based features")
     
     return df
 
@@ -50,6 +52,8 @@ def create_lag_features(df: pd.DataFrame) -> pd.DataFrame:
     # Filling NaN with 0 to represent no history
     lag_cols = [col for col in df.columns if any(x in col for x in ['Lag ', 'MA ', 'Std ', 'Growth '])]
     df[lag_cols] = df[lag_cols].fillna(0)
+
+    logger.info(f"Created {len(lag_cols)} lag features")
     
     return df
 
@@ -66,6 +70,8 @@ def create_business_features(df: pd.DataFrame) -> pd.DataFrame:
     # Weather impact score
     weather_scores = {'Sunny': 1.05, 'Cloudy': 1.0, 'Rainy': 0.95, 'Snowy': 0.90}
     df['Weather Impact'] = df['Weather Condition'].map(weather_scores)
+
+    logger.info("Created business features")
     
     return df
 
@@ -78,16 +84,22 @@ def encode_categoricals(df: pd.DataFrame) -> pd.DataFrame:
         if col in df.columns:
             dummies = pd.get_dummies(df[col], prefix=col)
             df = pd.concat([df, dummies], axis=1)
+
+    logger.info("Encoded categorical variables")
     
     return df
 
 def create_all_features(df: pd.DataFrame) -> pd.DataFrame:
     """Apply all feature engineering steps in sequence"""
+    logger.info("Creating features...")
+
     df = df.copy()
     
     df = create_time_features(df)
     df = create_lag_features(df)
     df = create_business_features(df)
     df = encode_categoricals(df)
+    
+    logger.info(f"Feature engineering complete: {len(df.columns)} columns")
     
     return df
