@@ -28,6 +28,7 @@ def create_time_features(df: pd.DataFrame) -> pd.DataFrame:
 
 def create_lag_features(df: pd.DataFrame) -> pd.DataFrame:
     """Create lag and rolling window features"""
+    df = df.copy().sort_values(['Store_ID', 'Category', 'Date'])
     
     for (store_id, category), group in df.groupby(['Store ID', 'Category']):
         mask = (df['Store ID'] == store_id) & (df['Category'] == category)
