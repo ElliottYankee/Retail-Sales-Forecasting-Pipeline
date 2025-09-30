@@ -29,7 +29,7 @@ def load_and_clean_data(file_path: str) -> pd.DataFrame:
     return df
 
 def aggregate_to_store_category(df: pd.DataFrame) -> pd.DataFrame:
-    """Aggregate product-level data to store-category level."""
+    """Aggregate product-level data to store-category level"""
     agg_df = df.groupby(['Date', 'Store ID', 'Category', 'Region']).agg({
         'Inventory Level': 'sum',
         'Units Sold': 'sum',
@@ -45,6 +45,10 @@ def aggregate_to_store_category(df: pd.DataFrame) -> pd.DataFrame:
     agg_df.columns = ['Date', 'Store ID', 'Category', 'Region',
                       'Inventory Level', 'Units Sold', 'Units Ordered', 'Average Price', 'Average Discount', 'Weather Condition',
                       'Holiday/Promotion', 'Competitor Pricing']
+    
+    # Rounding numeric columns to 2 decimal places for consistency
+    numeric_cols = ['Average Price', 'Average Discount', 'Competitor Pricing']
+    agg_df[numeric_cols] = agg_df[numeric_cols].round(2)
     
     logger.info(f"Aggregated to {len(agg_df):,} store-category records")
 
