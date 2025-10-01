@@ -2,6 +2,7 @@ from pathlib import Path
 import logging
 
 from src.data_loader import load_and_clean_data, aggregate_to_store_category
+from src.feature_engineering import create_all_features
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
@@ -20,3 +21,7 @@ def main():
     # Aggregate to store-category level
     logger.info("Aggregating to store-category level...")
     agg_data = aggregate_to_store_category(raw_data)
+
+    # Create all features
+    logger.info("Engineering features...")
+    features_data = create_all_features(agg_data)
