@@ -34,3 +34,11 @@ def main():
     complete_path = processed_dir / 'retail_features_complete.csv'
     features_data.to_csv(complete_path, index=False)
     logger.info(f"Saved complete dataset: {complete_path}")
+
+    # Creating time-based train/test splits (80/20)
+    logger.info("Creating train/test splits...")
+    features_data = features_data.sort_values('Date')
+    cutoff_idx = int(len(features_data) * 0.8)
+    
+    train_data = features_data.iloc[:cutoff_idx]
+    test_data = features_data.iloc[cutoff_idx:]
