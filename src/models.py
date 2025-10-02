@@ -9,6 +9,12 @@ class XGBoostForecaster:
             n_estimators=n_estimators,
             max_depth=max_depth,
             learning_rate=learning_rate,
-            random_state=42
+            random_state=1
         )
         logger.info("Initialized XGBoost model")
+
+    def fit(self, X, y):
+        """Train the model on feature matrix X and target y"""
+        self.model.fit(X, y)
+        logger.info("Model training complete")
+        return self
