@@ -3,7 +3,7 @@ import logging
 import json
 import sys
 
-# Add project root to path
+# Adding project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.data_loader import load_and_clean_data, aggregate_to_store_category

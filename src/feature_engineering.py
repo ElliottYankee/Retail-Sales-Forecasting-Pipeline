@@ -62,7 +62,7 @@ def create_business_features(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
 
     # Price competitiveness: Ratio > 1 = competitor is less expensive
-    df['Price vs Competitor'] = df['Avg Price'] / (df['Competitor Price'] + 0.01)
+    df['Price vs Competitor'] = df['Average Price'] / (df['Competitor Pricing'] + 0.01)
     
     # Inventory management: High value = overstock risk
     df['Inventory Days Supply'] = df['Inventory Level'] / (df['Units Sold'] + 1)
@@ -101,5 +101,5 @@ def create_all_features(df: pd.DataFrame) -> pd.DataFrame:
     df = encode_categoricals(df)
     
     logger.info(f"Feature engineering complete: {len(df.columns)} columns")
-    
+
     return df
