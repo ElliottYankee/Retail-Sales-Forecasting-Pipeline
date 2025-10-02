@@ -18,3 +18,11 @@ class XGBoostForecaster:
         self.model.fit(X, y)
         logger.info("Model training complete")
         return self
+    
+    def predict(self, X):
+        """Generate predictions for feature matrix X"""
+        return self.model.predict(X)
+    
+    def get_feature_importance(self):
+        """Return feature importance scores"""
+        return self.model.feature_importances_
