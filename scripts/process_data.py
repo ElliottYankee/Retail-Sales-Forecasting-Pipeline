@@ -42,3 +42,14 @@ def main():
     
     train_data = features_data.iloc[:cutoff_idx]
     test_data = features_data.iloc[cutoff_idx:]
+
+    # Saving splits
+    train_path = processed_dir / 'train_data.csv'
+    test_path = processed_dir / 'test_data.csv'
+    
+    train_data.to_csv(train_path, index=False)
+    test_data.to_csv(test_path, index=False)
+
+    logger.info(f"Train set: {len(train_data):,} records ({train_data['Date'].min().date()} to {train_data['Date'].max().date()})")
+    logger.info(f"Test set: {len(test_data):,} records ({test_data['Date'].min().date()} to {test_data['Date'].max().date()})")
+    
