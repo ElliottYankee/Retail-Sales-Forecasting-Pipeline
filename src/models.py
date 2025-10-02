@@ -1,4 +1,5 @@
 import xgboost as xgb
+from sklearn.ensemble import RandomForestRegressor
 import logging
 
 logger = logging.getLogger(__name__)
@@ -26,3 +27,14 @@ class XGBoostForecaster:
     def get_feature_importance(self):
         """Return feature importance scores"""
         return self.model.feature_importances_
+    
+class RandomForestForecaster:
+    def __init__(self, n_estimators=100, max_depth=10, min_samples_split=5):
+        self.model = RandomForestRegressor(
+            n_estimators=n_estimators,
+            max_depth=max_depth,
+            min_samples_split=min_samples_split,
+            random_state=1,
+            n_jobs=-1  # Using all CPU cores
+        )
+        logger.info("Initialized Random Forest model")
