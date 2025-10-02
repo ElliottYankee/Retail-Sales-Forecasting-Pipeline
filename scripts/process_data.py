@@ -1,5 +1,6 @@
 from pathlib import Path
 import logging
+import json
 
 from src.data_loader import load_and_clean_data, aggregate_to_store_category
 from src.feature_engineering import create_all_features
@@ -52,4 +53,15 @@ def main():
 
     logger.info(f"Train set: {len(train_data):,} records ({train_data['Date'].min().date()} to {train_data['Date'].max().date()})")
     logger.info(f"Test set: {len(test_data):,} records ({test_data['Date'].min().date()} to {test_data['Date'].max().date()})")
+
+    # Save feature column names (exclude identifiers and target)
+    feature_cols = [col for col in features_data.columns 
+                   if col not in ['Date', 'Store ID', 'Category', 'Region', 'Units Sold']]
+    
+    features_path = processed_dir / 'feature_columns.json'
+    with open(features_path, 'w') as f:
+        json.dump(feature_cols, f, indent=2)
+    
+    logger.info(f"Saved {len(feature_cols)} feature columns")
+
     
