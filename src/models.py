@@ -38,3 +38,17 @@ class RandomForestForecaster:
             n_jobs=-1  # Using all CPU cores
         )
         logger.info("Initialized Random Forest model")
+
+    def fit(self, X, y):
+        """Train the model on feature matrix X and target y"""
+        self.model.fit(X, y)
+        logger.info("Model training complete")
+        return self
+    
+    def predict(self, X):
+        """Generate predictions for feature matrix X"""
+        return self.model.predict(X)
+    
+    def get_feature_importance(self):
+        """Return feature importance scores"""
+        return self.model.feature_importances_ 
