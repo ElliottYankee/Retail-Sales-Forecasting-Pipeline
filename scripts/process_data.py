@@ -54,7 +54,7 @@ def main():
     logger.info(f"Train set: {len(train_data):,} records ({train_data['Date'].min().date()} to {train_data['Date'].max().date()})")
     logger.info(f"Test set: {len(test_data):,} records ({test_data['Date'].min().date()} to {test_data['Date'].max().date()})")
 
-    # Save feature column names (exclude identifiers and target)
+    # Saving feature column names (exclude identifiers and target)
     feature_cols = [col for col in features_data.columns 
                    if col not in ['Date', 'Store ID', 'Category', 'Region', 'Units Sold']]
     
@@ -63,5 +63,14 @@ def main():
         json.dump(feature_cols, f, indent=2)
     
     logger.info(f"Saved {len(feature_cols)} feature columns")
+
+    print("DATA PROCESSING COMPLETE")
+    print(f"Processed data saved to: {processed_dir}")
+    print(f"Total features: {len(feature_cols)}")
+    print(f"Train records: {len(train_data):,}")
+    print(f"Test records: {len(test_data):,}")
+
+if __name__ == "__main__":
+    main()
 
     
