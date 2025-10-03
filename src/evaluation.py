@@ -22,3 +22,9 @@ def evaluate_model(y_true, y_pred):
         'MAPE': round(mape, 2),
         'R2': round(r2, 3)
     }
+
+def print_metrics(metrics):
+    """Display metrics in readable format."""
+    print("\nModel Performance Metrics:")
+    for metric, value in metrics.items():
+        print(f"{metric:10s}: {value}")
