@@ -3,6 +3,7 @@ import pandas as pd
 import json
 
 from src.models import XGBoostForecaster, RandomForestForecaster
+from src.evaluation import evaluate_model, print_metrics
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
@@ -35,3 +36,14 @@ def main():
     logger.info("Training RandomForest model...")
     rf_model = RandomForestForecaster()
     rf_model.fit(X_train, y_train)
+
+    # Evaluating models on test set
+    logger.info("Evaluating XGBoost...")
+    xgb_predictions = xgb_model.predict(X_test)
+    xgb_metrics = evaluate_model(y_test, xgb_predictions)
+    print_metrics(xgb_metrics)
+
+    logger.info("Evaluating RandomForest...")
+    rf_predictions = rf_model.predict(X_test)
+    rf_metrics = evaluate_model(y_test, rf_predictions)
+    print_metrics(rf_metrics)
