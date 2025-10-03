@@ -1,6 +1,8 @@
 import logging
 import pandas as pd
 import json
+from pathlib import Path
+import joblib
 
 from src.models import XGBoostForecaster, RandomForestForecaster
 from src.evaluation import evaluate_model, print_metrics
@@ -47,3 +49,15 @@ def main():
     rf_predictions = rf_model.predict(X_test)
     rf_metrics = evaluate_model(y_test, rf_predictions)
     print_metrics(rf_metrics)
+
+    # Saving trained models
+    models_dir = Path('trained_models')
+    models_dir.mkdir(exist_ok=True)  # Creating the models directory if it doesn't exist
+    
+    model_path = models_dir / 'xgboost_model.pkl'
+    joblib.dump(xgb_model, model_path)
+    logger.info(f"Model saved to: {model_path}")
+
+    model_path = models_dir / 'randomforest_model.pkl'
+    joblib.dump(rf_model, model_path)
+    logger.info(f"Model saved to: {model_path}")
