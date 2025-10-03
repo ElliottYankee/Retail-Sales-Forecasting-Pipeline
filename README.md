@@ -26,3 +26,25 @@ This project will use retail sales data featuring:
 - Product Categories: Sales across different product lines
 - Store Information: Multiple store locations and characteristics
 - External Factors: Holidays, promotions, and seasonal events
+
+## Installation
+```bash
+# Clone repository
+git clone <your-repo-url>
+cd retail-sales-forecasting
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+## Usage
+```bash
+# Stage 1: Process raw data
+python scripts/process_data.py
+
+# Stage 2: Train model
+WIP
+```
