@@ -24,7 +24,7 @@ def evaluate_model(y_true, y_pred):
     }
 
 def print_metrics(metrics):
-    """Display metrics in readable format."""
+    """Display metrics in readable format"""
     print("\nModel Performance Metrics:")
     for metric, value in metrics.items():
         print(f"{metric:10s}: {value}")
