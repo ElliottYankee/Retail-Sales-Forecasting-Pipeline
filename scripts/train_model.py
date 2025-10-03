@@ -18,3 +18,9 @@ def main():
         feature_columns = json.load(f)
     
     logger.info(f"Training with {len(feature_columns)} features on {len(train_data):,} records")
+
+    # Preparing X (features) and y (target) for training
+    X_train = train_data[feature_columns]
+    y_train = train_data['Units Sold']
+    X_test = test_data[feature_columns]
+    y_test = test_data['Units Sold']
