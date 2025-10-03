@@ -61,3 +61,14 @@ def main():
     model_path = models_dir / 'randomforest_model.pkl'
     joblib.dump(rf_model, model_path)
     logger.info(f"Model saved to: {model_path}")
+
+    # Saving feature columns with model for consistency
+    features_path = models_dir / 'feature_columns.json'
+    with open(features_path, 'w') as f:
+        json.dump(feature_columns, f, indent=2)
+    logger.info(f"Feature columns saved to: {features_path}")
+
+    print("MODEL TRAINING COMPLETE")
+
+if __name__ == "__main__":
+    main()
