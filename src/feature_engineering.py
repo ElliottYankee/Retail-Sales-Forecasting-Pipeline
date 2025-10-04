@@ -65,11 +65,15 @@ def create_business_features(df: pd.DataFrame) -> pd.DataFrame:
     df['Price vs Competitor'] = df['Average Price'] / (df['Competitor Pricing'] + 0.01)
     
     # Inventory management: High value = overstock risk
-    df['Inventory Days Supply'] = df['Inventory Level'] / (df['Units Sold'] + 1)
+    df['Inventory Days Supply'] = (df['Inventory Level'] / (df['Units Sold'] + 1)).clip(upper=365)  # Caps at 1 year
 
     # Weather impact score
     weather_scores = {'Sunny': 1.05, 'Cloudy': 1.0, 'Rainy': 0.95, 'Snowy': 0.90}
     df['Weather Impact'] = df['Weather Condition'].map(weather_scores)
+
+    # Replacing any remaining inf/nan
+    df = df.replace([np.inf, -np.inf], np.nan)
+    df = df.fillna(0)
 
     logger.info("Created business features")
     
@@ -84,6 +88,7 @@ def encode_categoricals(df: pd.DataFrame) -> pd.DataFrame:
         if col in df.columns:
             dummies = pd.get_dummies(df[col], prefix=col)
             df = pd.concat([df, dummies], axis=1)
+            df = df.drop(col, axis=1)  # Dropping original categorical column
 
     logger.info("Encoded categorical variables")
     
