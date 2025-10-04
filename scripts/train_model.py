@@ -3,6 +3,10 @@ import pandas as pd
 import json
 from pathlib import Path
 import joblib
+import sys
+
+# Adding project root to path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.models import XGBoostForecaster, RandomForestForecaster
 from src.evaluation import evaluate_model, print_metrics
@@ -69,6 +73,9 @@ def main():
     logger.info(f"Feature columns saved to: {features_path}")
 
     print("MODEL TRAINING COMPLETE")
+    print("\nMODEL COMPARISON:")
+    print(f"XGBoost MAPE: {xgb_metrics['MAPE']}%")
+    print(f"RandomForest MAPE: {rf_metrics['MAPE']}%")
 
 if __name__ == "__main__":
     main()
