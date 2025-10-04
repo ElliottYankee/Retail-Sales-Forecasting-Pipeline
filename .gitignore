@@ -214,7 +214,3 @@ data/processed/*.json
 trained_models/*.pkl
 trained_models/*.joblib
 trained_models/*.json
-
-# Keeping the directories but not their contents
-!data/processed/.gitkeep
-!trained_models/.gitkeep
