@@ -46,5 +46,5 @@ pip install -r requirements.txt
 python scripts/process_data.py
 
 # Stage 2: Train model
-WIP
+python scripts/train_model.py
 ```
