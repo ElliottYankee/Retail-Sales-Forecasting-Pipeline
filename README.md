@@ -4,11 +4,11 @@ An automated time series retail sales forecasting model with an ETL pipeline
 ## Table of Contents
 [Overview](#overview)  
 [Business Problem](#business-problem)  
-[Dataset](#dataset)  
 [Installation](#installation)  
 [Usage](#usage)  
 [Model Performance & Data Limitations](#model-performance--data-limitations)  
 [What This Project Demonstrates](#what-this-project-demonstrates)
+[Technologies Used](#technologies-used)
 [Dataset](#dataset)
 
 ## Overview
@@ -83,6 +83,21 @@ While the performance metrics are inflated, the project successfully showcases:
 - Feature engineering for temporal forecasting
 - Model comparison and evaluation frameworks
 - Production-ready code structure
+
+# Technologies Used
+Core:
+Python 3.12
+pandas, NumPy (data processing)
+scikit-learn (Random Forest, metrics)
+XGBoost (gradient boosting)
+
+Visualization:
+Matplotlib, Seaborn
+Jupyter Notebook
+
+Infrastructure:
+joblib (model persistence)
+Git (version control)
 
 ## Dataset
 
