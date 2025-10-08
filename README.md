@@ -20,7 +20,7 @@ This project implements a complete machine learning pipeline for retail sales fo
 
 Key Features:
 - Store-category level sales aggregation
-- 38 engineered features from temporal, business, and external factors
+- 37 engineered features from temporal, business, and external factors
 - Time-based train/test splitting to prevent data leakage
 - Production-ready modular architecture
 
@@ -35,30 +35,31 @@ Accurate sales forecasting is critical for:
 retail-sales-forecasting/
 ├── data/
 │   ├── raw/                          
-│   │   └── retail_store_inventory.csv # Original dataset
-│   └── processed/                     # Generated datasets (not tracked)
+│   │   └── retail_store_inventory.csv   # Original dataset
+│   └── processed/                       # Generated datasets (not tracked)
 │       ├── retail_features_complete.csv
 │       ├── train_data.csv
 │       ├── test_data.csv
 │       └── feature_columns.json
 ├── src/
 │   ├── __init__.py
-│   ├── data_loader.py                # Data loading and aggregation
-│   ├── feature_engineering.py        # Feature creation functions
-│   ├── models.py                     # Model class definitions
-│   └── evaluation.py                 # Performance metrics
+│   ├── data_loader.py                   # Data loading and aggregation
+│   ├── feature_engineering.py           # Feature creation functions
+│   ├── models.py                        # Model class definitions
+│   └── evaluation.py                    # Performance metrics
 ├── scripts/
-│   ├── process_data.py              # Stage 1: Data processing pipeline
-│   └── train_model.py               # Stage 2: Model training pipeline
+│   ├── process_data.py                  # Stage 1: Data processing pipeline
+│   └── train_model.py                   # Stage 2: Model training pipeline
 ├── notebooks/
-│   ├── 00_data_exploration.ipynb    # Exploratory data analysis
-│   └── model_comparison.ipynb       # Model evaluation and visualization
-├── trained_models/                  # Saved models (not tracked)
+│   ├── 00_data_exploration.ipynb        # Exploratory data analysis
+│   └── model_comparison.ipynb           # Model evaluation and visualization
+├── trained_models/                      # Saved models (not tracked)
 │   ├── xgboost_model.pkl
 │   ├── randomforest_model.pkl
 │   └── feature_columns.json
 ├── .gitignore
 ├── config.py
+├── LICENSE.txt
 ├── requirements.txt
 └── README.md
 
