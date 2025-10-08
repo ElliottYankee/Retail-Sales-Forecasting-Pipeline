@@ -2,14 +2,14 @@
 An automated time series retail sales forecasting model with an ETL pipeline
 
 ## Table of Contents
-[Overview](#overview)  
-[Business Problem](#business-problem)  
-[Installation](#installation)  
-[Usage](#usage)  
-[Model Performance & Data Limitations](#model-performance--data-limitations)  
-[What This Project Demonstrates](#what-this-project-demonstrates)
-[Technologies Used](#technologies-used)
-[Dataset](#dataset)
+- [Overview](#overview)  
+- [Business Problem](#business-problem)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Model Performance & Data Limitations](#model-performance--data-limitations)  
+- [What This Project Demonstrates](#what-this-project-demonstrates)
+- [Technologies Used](#technologies-used)
+- [Dataset](#dataset)
 
 ## Overview
 This project implements a complete machine learning pipeline for retail sales forecasting, including:
