@@ -31,13 +31,6 @@ Accurate sales forecasting is critical for:
 - Financial Planning: Improving revenue predictions and budget allocation
 - Marketing Strategy: Timing promotions and campaigns effectively
 
-## Dataset
-This project will use retail sales data featuring:
-- Time Series Data: Daily sales records over multiple years
-- Product Categories: Sales across different product lines
-- Store Information: Multiple store locations and characteristics
-- External Factors: Holidays, promotions, and seasonal events
-
 ## Installation
 ```bash
 # Clone repository
