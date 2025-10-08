@@ -54,12 +54,19 @@ pip install -r requirements.txt
 
 ## Usage
 ```bash
+# Optional: Examine raw data
+jupyter notebook notebooks/00_dataset_overview.ipynb
+
 # Stage 1: Process raw data
 python scripts/process_data.py
 
 # Stage 2: Train model
 python scripts/train_model.py
+
+# Optional: Compare model outputs
+jupyter notebook notebooks/model_comparison.ipynb
 ```
+
 
 ## Model Performance & Data Limitations
 ### Current Results
