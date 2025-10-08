@@ -1,8 +1,28 @@
 # Retail-Sales-Forecasting-Pipeline
 An automated time series retail sales forecasting model with an ETL pipeline
 
+## Table of Contents
+[Overview](#overview)  
+[Business Problem](#business-problem)  
+[Installation](#installation)  
+[Usage](#usage)  
+[Model Performance & Data Limitations](#model-performance--data-limitations)  
+[What This Project Demonstrates](#what-this-project-demonstrates)
+[Technologies Used](#technologies-used)
+[Dataset](#dataset)
+
 ## Overview
-An end-to-end machine learning system that predicts retail sales using time series analysis. This project demonstrates the complete ML lifecycle from data ingestion to model deployment, featuring automated ETL pipelines, multiple forecasting models, and a production-ready API.
+This project implements a complete machine learning pipeline for retail sales forecasting, including:
+- Automated ETL data processing
+- Time-series feature engineering (lag features, rolling statistics, cyclical encoding)
+- Multi-model training and comparison (XGBoost vs Random Forest)
+- Comprehensive model evaluation and visualization
+
+Key Features:
+- Store-category level sales aggregation
+- 38 engineered features from temporal, business, and external factors
+- Time-based train/test splitting to prevent data leakage
+- Production-ready modular architecture
 
 ## Business Problem
 Accurate sales forecasting is critical for:
@@ -11,21 +31,36 @@ Accurate sales forecasting is critical for:
 - Financial Planning: Improving revenue predictions and budget allocation
 - Marketing Strategy: Timing promotions and campaigns effectively
 
-## Future Features
-- Automated ETL Pipeline: Processes raw sales data with validation and error handling
-- Feature Engineering: Creates time-based, lag, and trend features for improved predictions
-- Multi-Model Framework: Compares Linear Regression, Random Forest, and XGBoost models
-- REST API: Provides real-time predictions via FastAPI
-- Containerization: Docker support for easy deployment
-- Monitoring: Tracks model performance and data quality over time
-- Comprehensive Testing: Unit tests for all pipeline components
-
-## Dataset
-This project will use retail sales data featuring:
-- Time Series Data: Daily sales records over multiple years
-- Product Categories: Sales across different product lines
-- Store Information: Multiple store locations and characteristics
-- External Factors: Holidays, promotions, and seasonal events
+# Project Structure
+retail-sales-forecasting/
+├── data/
+│   ├── raw/                          
+│   │   └── retail_store_inventory.csv # Original dataset
+│   └── processed/                     # Generated datasets (not tracked)
+│       ├── retail_features_complete.csv
+│       ├── train_data.csv
+│       ├── test_data.csv
+│       └── feature_columns.json
+├── src/
+│   ├── __init__.py
+│   ├── data_loader.py                # Data loading and aggregation
+│   ├── feature_engineering.py        # Feature creation functions
+│   ├── models.py                     # Model class definitions
+│   └── evaluation.py                 # Performance metrics
+├── scripts/
+│   ├── process_data.py              # Stage 1: Data processing pipeline
+│   └── train_model.py               # Stage 2: Model training pipeline
+├── notebooks/
+│   ├── 00_data_exploration.ipynb    # Exploratory data analysis
+│   └── model_comparison.ipynb       # Model evaluation and visualization
+├── trained_models/                  # Saved models (not tracked)
+│   ├── xgboost_model.pkl
+│   ├── randomforest_model.pkl
+│   └── feature_columns.json
+├── .gitignore
+├── config.py
+├── requirements.txt
+└── README.md
 
 ## Installation
 ```bash
@@ -43,12 +78,19 @@ pip install -r requirements.txt
 
 ## Usage
 ```bash
+# Optional: Examine raw data
+jupyter notebook notebooks/00_dataset_overview.ipynb
+
 # Stage 1: Process raw data
 python scripts/process_data.py
 
 # Stage 2: Train model
 python scripts/train_model.py
+
+# Optional: Compare model outputs
+jupyter notebook notebooks/model_comparison.ipynb
 ```
+
 
 ## Model Performance & Data Limitations
 ### Current Results
@@ -65,13 +107,28 @@ Real-world retail forecasting typically achieves:
 
 The synthetic dataset used in this project exhibits artificially predictable patterns without the noise, irregularities, and complexity present in actual retail operations. This allows models to achieve near-perfect predictions that are impossible with real data.
 
-## What This Project Demonstrates: 
+## What This Project Demonstrates  
 While the performance metrics are inflated, the project successfully showcases:
 - End-to-end ML pipeline architecture
 - Proper time-series data handling (no data leakage)
 - Feature engineering for temporal forecasting
 - Model comparison and evaluation frameworks
 - Production-ready code structure
+
+# Technologies Used
+Core:
+Python 3.12
+pandas, NumPy (data processing)
+scikit-learn (Random Forest, metrics)
+XGBoost (gradient boosting)
+
+Visualization:
+Matplotlib, Seaborn
+Jupyter Notebook
+
+Infrastructure:
+joblib (model persistence)
+Git (version control)
 
 ## Dataset
 
@@ -82,5 +139,12 @@ This project uses the [Retail Store Inventory Forecasting Dataset](https://www.k
 - 5 product categories: Electronics, Clothing, Groceries, Furniture, Toys
 - Features include sales, inventory, pricing, weather, and promotional data
 - Date range: January 2022 - January 2024
+  Data Processing:
+
+**Data Processing:**  
+- Aggregated from product-level to store-category level (73,100 to 46,947 records)  
+- Removed problematic "Demand Forecast" column (0.997 correlation with target)  
+- Fixed incorrect seasonality assignments  
+- Applied data quality validations  
 
 **Note:** This is synthetic data created for educational purposes. See [Model Performance & Data Limitations](#model-performance--data-limitations) for details on how this affects results.
