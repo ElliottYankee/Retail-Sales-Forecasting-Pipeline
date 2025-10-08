@@ -31,6 +31,37 @@ Accurate sales forecasting is critical for:
 - Financial Planning: Improving revenue predictions and budget allocation
 - Marketing Strategy: Timing promotions and campaigns effectively
 
+# Project Structure
+retail-sales-forecasting/
+├── data/
+│   ├── raw/                          
+│   │   └── retail_store_inventory.csv # Original dataset
+│   └── processed/                     # Generated datasets (not tracked)
+│       ├── retail_features_complete.csv
+│       ├── train_data.csv
+│       ├── test_data.csv
+│       └── feature_columns.json
+├── src/
+│   ├── __init__.py
+│   ├── data_loader.py                # Data loading and aggregation
+│   ├── feature_engineering.py        # Feature creation functions
+│   ├── models.py                     # Model class definitions
+│   └── evaluation.py                 # Performance metrics
+├── scripts/
+│   ├── process_data.py              # Stage 1: Data processing pipeline
+│   └── train_model.py               # Stage 2: Model training pipeline
+├── notebooks/
+│   ├── 00_data_exploration.ipynb    # Exploratory data analysis
+│   └── model_comparison.ipynb       # Model evaluation and visualization
+├── trained_models/                  # Saved models (not tracked)
+│   ├── xgboost_model.pkl
+│   ├── randomforest_model.pkl
+│   └── feature_columns.json
+├── .gitignore
+├── config.py
+├── requirements.txt
+└── README.md
+
 ## Installation
 ```bash
 # Clone repository
