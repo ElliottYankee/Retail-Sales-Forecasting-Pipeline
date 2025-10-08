@@ -1,16 +1,24 @@
 import xgboost as xgb
 from sklearn.ensemble import RandomForestRegressor
+from pathlib import Path
 import logging
+import sys
+
+# Adding project root to path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from config import XGBOOST_PARAMS, RANDOM_FOREST_PARAMS, RANDOM_STATE, N_JOBS
 
 logger = logging.getLogger(__name__)
 
 class XGBoostForecaster:
-    def __init__(self, n_estimators=100, max_depth=6, learning_rate=0.1):
+    def __init__(self, xgb_params=XGBOOST_PARAMS):
         self.model = xgb.XGBRegressor(
-            n_estimators=n_estimators,
-            max_depth=max_depth,
-            learning_rate=learning_rate,
-            random_state=1
+            n_estimators= xgb_params['n_estimators'],
+            max_depth= xgb_params['max_depth'],
+            learning_rate= xgb_params['learning_rate'],
+            random_state= RANDOM_STATE,
+            n_jobs= N_JOBS
         )
         logger.info("Initialized XGBoost model")
 
@@ -29,13 +37,13 @@ class XGBoostForecaster:
         return self.model.feature_importances_
     
 class RandomForestForecaster:
-    def __init__(self, n_estimators=100, max_depth=10, min_samples_split=5):
+    def __init__(self, rf_params=RANDOM_FOREST_PARAMS):
         self.model = RandomForestRegressor(
-            n_estimators=n_estimators,
-            max_depth=max_depth,
-            min_samples_split=min_samples_split,
-            random_state=1,
-            n_jobs=-1  # Using all CPU cores
+            n_estimators= rf_params['n_estimators'],
+            max_depth= rf_params['max_depth'],
+            min_samples_split= rf_params['min_samples_split'],
+            random_state= RANDOM_STATE,
+            n_jobs= N_JOBS
         )
         logger.info("Initialized Random Forest model")
 

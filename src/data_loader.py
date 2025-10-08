@@ -1,6 +1,12 @@
 import pandas as pd
 from pathlib import Path
 import logging
+import sys
+
+# Adding project root to path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from config import RAW_DATA_DIR, RETAIL_STORE_INVENTORY
 
 logger = logging.getLogger(__name__)
 
@@ -54,9 +60,7 @@ def aggregate_to_store_category(df: pd.DataFrame) -> pd.DataFrame:
     return agg_df
 
 if __name__ == "__main__":
-     # Getting project root (two levels up from this file)
-    project_root = Path(__file__).parent.parent
-    raw_file_path = project_root / 'data' / 'raw' / 'retail_store_inventory.csv'
+    raw_file_path = RAW_DATA_DIR / RETAIL_STORE_INVENTORY
     
     # Running data cleansing and aggregation
     cleaned_df = load_and_clean_data(str(raw_file_path))

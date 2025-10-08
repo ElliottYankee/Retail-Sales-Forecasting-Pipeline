@@ -8,6 +8,7 @@ import sys
 # Adding project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+from config import MODELS_DIR
 from src.models import XGBoostForecaster, RandomForestForecaster
 from src.evaluation import evaluate_model, print_metrics
 
@@ -55,7 +56,7 @@ def main():
     print_metrics(rf_metrics)
 
     # Saving trained models
-    models_dir = Path('trained_models')
+    models_dir = MODELS_DIR
     models_dir.mkdir(exist_ok=True)  # Creating the models directory if it doesn't exist
     
     model_path = models_dir / 'xgboost_model.pkl'
