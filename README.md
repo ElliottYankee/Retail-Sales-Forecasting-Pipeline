@@ -108,5 +108,12 @@ This project uses the [Retail Store Inventory Forecasting Dataset](https://www.k
 - 5 product categories: Electronics, Clothing, Groceries, Furniture, Toys
 - Features include sales, inventory, pricing, weather, and promotional data
 - Date range: January 2022 - January 2024
+  Data Processing:
+
+**Data Processing:**  
+- Aggregated from product-level to store-category level (73,100 to 46,947 records)  
+- Removed problematic "Demand Forecast" column (0.997 correlation with target)  
+- Fixed incorrect seasonality assignments  
+- Applied data quality validations  
 
 **Note:** This is synthetic data created for educational purposes. See [Model Performance & Data Limitations](#model-performance--data-limitations) for details on how this affects results.
