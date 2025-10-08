@@ -13,7 +13,17 @@ An automated time series retail sales forecasting model with an ETL pipeline
 [Dataset](#dataset)
 
 ## Overview
-An end-to-end machine learning system that predicts retail sales using time series analysis. This project demonstrates the complete ML lifecycle from data ingestion to model deployment, featuring automated ETL pipelines, multiple forecasting models, and a production-ready API.
+This project implements a complete machine learning pipeline for retail sales forecasting, including:
+- Automated ETL data processing
+- Time-series feature engineering (lag features, rolling statistics, cyclical encoding)
+- Multi-model training and comparison (XGBoost vs Random Forest)
+- Comprehensive model evaluation and visualization
+
+Key Features:
+- Store-category level sales aggregation
+- 38 engineered features from temporal, business, and external factors
+- Time-based train/test splitting to prevent data leakage
+- Production-ready modular architecture
 
 ## Business Problem
 Accurate sales forecasting is critical for:
