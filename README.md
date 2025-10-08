@@ -1,6 +1,17 @@
 # Retail-Sales-Forecasting-Pipeline
 An automated time series retail sales forecasting model with an ETL pipeline
 
+## Table of Contents
+[Overview](#overview)  
+[Business Problem](#business-problem)  
+[Future Features](#future-features)  
+[Dataset](#dataset)  
+[Installation](#installation)  
+[Usage](#usage)  
+[Model Performance & Data Limitations](#model-performance--data-limitations)  
+[What This Project Demonstrates](#what-this-project-demonstrates)
+[Dataset](#dataset)
+
 ## Overview
 An end-to-end machine learning system that predicts retail sales using time series analysis. This project demonstrates the complete ML lifecycle from data ingestion to model deployment, featuring automated ETL pipelines, multiple forecasting models, and a production-ready API.
 
@@ -65,7 +76,7 @@ Real-world retail forecasting typically achieves:
 
 The synthetic dataset used in this project exhibits artificially predictable patterns without the noise, irregularities, and complexity present in actual retail operations. This allows models to achieve near-perfect predictions that are impossible with real data.
 
-## What This Project Demonstrates: 
+## What This Project Demonstrates  
 While the performance metrics are inflated, the project successfully showcases:
 - End-to-end ML pipeline architecture
 - Proper time-series data handling (no data leakage)
