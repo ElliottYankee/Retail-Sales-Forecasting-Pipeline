@@ -31,7 +31,7 @@ Accurate sales forecasting is critical for:
 - Financial Planning: Improving revenue predictions and budget allocation
 - Marketing Strategy: Timing promotions and campaigns effectively
 
-# Project Structure
+## Project Structure
 retail-sales-forecasting/  
 ├── data/  
 │   ├── raw/                            
@@ -116,7 +116,7 @@ While the performance metrics are inflated, the project successfully showcases:
 - Model comparison and evaluation frameworks
 - Production-ready code structure
 
-# Technologies Used
+## Technologies Used
 Core:
 Python 3.12
 pandas, NumPy (data processing)
