@@ -2,14 +2,14 @@
 An automated time series retail sales forecasting model with an ETL pipeline
 
 ## Table of Contents
-[Overview](#overview)  
-[Business Problem](#business-problem)  
-[Installation](#installation)  
-[Usage](#usage)  
-[Model Performance & Data Limitations](#model-performance--data-limitations)  
-[What This Project Demonstrates](#what-this-project-demonstrates)
-[Technologies Used](#technologies-used)
-[Dataset](#dataset)
+- [Overview](#overview)  
+- [Business Problem](#business-problem)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Model Performance & Data Limitations](#model-performance--data-limitations)  
+- [What This Project Demonstrates](#what-this-project-demonstrates)
+- [Technologies Used](#technologies-used)
+- [Dataset](#dataset)
 
 ## Overview
 This project implements a complete machine learning pipeline for retail sales forecasting, including:
@@ -20,7 +20,7 @@ This project implements a complete machine learning pipeline for retail sales fo
 
 Key Features:
 - Store-category level sales aggregation
-- 38 engineered features from temporal, business, and external factors
+- 37 engineered features from temporal, business, and external factors
 - Time-based train/test splitting to prevent data leakage
 - Production-ready modular architecture
 
@@ -31,36 +31,37 @@ Accurate sales forecasting is critical for:
 - Financial Planning: Improving revenue predictions and budget allocation
 - Marketing Strategy: Timing promotions and campaigns effectively
 
-# Project Structure
-retail-sales-forecasting/
-├── data/
-│   ├── raw/                          
-│   │   └── retail_store_inventory.csv # Original dataset
-│   └── processed/                     # Generated datasets (not tracked)
-│       ├── retail_features_complete.csv
-│       ├── train_data.csv
-│       ├── test_data.csv
-│       └── feature_columns.json
-├── src/
-│   ├── __init__.py
-│   ├── data_loader.py                # Data loading and aggregation
-│   ├── feature_engineering.py        # Feature creation functions
-│   ├── models.py                     # Model class definitions
-│   └── evaluation.py                 # Performance metrics
-├── scripts/
-│   ├── process_data.py              # Stage 1: Data processing pipeline
-│   └── train_model.py               # Stage 2: Model training pipeline
-├── notebooks/
-│   ├── 00_data_exploration.ipynb    # Exploratory data analysis
-│   └── model_comparison.ipynb       # Model evaluation and visualization
-├── trained_models/                  # Saved models (not tracked)
-│   ├── xgboost_model.pkl
-│   ├── randomforest_model.pkl
-│   └── feature_columns.json
-├── .gitignore
-├── config.py
-├── requirements.txt
-└── README.md
+## Project Structure
+retail-sales-forecasting/  
+├── data/  
+│   ├── raw/                            
+│   │   └── retail_store_inventory.csv   # Original dataset  
+│   └── processed/                       # Generated datasets (not tracked)  
+│       ├── retail_features_complete.csv  
+│       ├── train_data.csv  
+│       ├── test_data.csv  
+│       └── feature_columns.json  
+├── src/  
+│   ├── __init__.py  
+│   ├── data_loader.py                   # Data loading and aggregation  
+│   ├── feature_engineering.py           # Feature creation functions  
+│   ├── models.py                        # Model class definitions  
+│   └── evaluation.py                    # Performance metrics  
+├── scripts/  
+│   ├── process_data.py                  # Stage 1: Data processing pipeline  
+│   └── train_model.py                   # Stage 2: Model training pipeline  
+├── notebooks/  
+│   ├── 00_data_exploration.ipynb        # Exploratory data analysis  
+│   └── model_comparison.ipynb           # Model evaluation and visualization  
+├── trained_models/                      # Saved models (not tracked)  
+│   ├── xgboost_model.pkl  
+│   ├── randomforest_model.pkl  
+│   └── feature_columns.json  
+├── .gitignore  
+├── config.py  
+├── LICENSE.txt  
+├── requirements.txt  
+└── README.md  
 
 ## Installation
 ```bash
@@ -115,7 +116,7 @@ While the performance metrics are inflated, the project successfully showcases:
 - Model comparison and evaluation frameworks
 - Production-ready code structure
 
-# Technologies Used
+## Technologies Used
 Core:
 Python 3.12
 pandas, NumPy (data processing)
