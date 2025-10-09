@@ -66,7 +66,7 @@ retail-sales-forecasting/
 ## Installation
 ```bash
 # Clone repository
-git clone <your-repo-url>
+git clone https://github.com/ElliottYankee/Retail-Sales-Forecasting-Pipeline.git
 cd retail-sales-forecasting
 
 # Create virtual environment
@@ -109,27 +109,27 @@ Real-world retail forecasting typically achieves:
 The synthetic dataset used in this project exhibits artificially predictable patterns without the noise, irregularities, and complexity present in actual retail operations. This allows models to achieve near-perfect predictions that are impossible with real data.
 
 ## What This Project Demonstrates  
-While the performance metrics are inflated, the project successfully showcases:
-- End-to-end ML pipeline architecture
-- Proper time-series data handling (no data leakage)
-- Feature engineering for temporal forecasting
-- Model comparison and evaluation frameworks
-- Production-ready code structure
+While the performance metrics are inflated, the project successfully showcases:  
+- End-to-end ML pipeline architecture  
+- Proper time-series data handling (no data leakage)  
+- Feature engineering for temporal forecasting  
+- Model comparison and evaluation frameworks  
+- Production-ready code structure  
 
 ## Technologies Used
-Core:
-Python 3.12
-pandas, NumPy (data processing)
-scikit-learn (Random Forest, metrics)
-XGBoost (gradient boosting)
+Core:  
+- Python 3.12  
+- pandas, NumPy (data processing)  
+- scikit-learn (Random Forest, metrics)  
+- XGBoost (gradient boosting)  
 
 Visualization:
-Matplotlib, Seaborn
-Jupyter Notebook
+- Matplotlib, Seaborn  
+- Jupyter Notebook  
 
 Infrastructure:
-joblib (model persistence)
-Git (version control)
+- joblib (model persistence)
+- Git (version control)  
 
 ## Dataset
 
