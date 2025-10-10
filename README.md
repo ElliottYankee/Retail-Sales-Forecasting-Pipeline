@@ -5,6 +5,7 @@ An automated time series retail sales forecasting model with an ETL pipeline
 - [Overview](#overview)  
 - [Business Problem](#business-problem)
 - [Project Structure](#project-structure)
+- [Project Workflow](#project-workflow)
 - [Installation](#installation)  
 - [Usage](#usage)   
 - [What This Project Demonstrates](#what-this-project-demonstrates)
@@ -65,6 +66,19 @@ retail-sales-forecasting/
 ├── LICENSE.txt  
 ├── requirements.txt  
 └── README.md  
+
+## Project Workflow
+1. Raw Data (73,100 rows)
+
+3. Data Cleaning & Aggregation -> src/data_loader.py  
+
+4. Feature Engineering (37 features) -> src/feature_engineering.py  
+
+5. Train/Test Split (80/20) -> scripts/process_data.py  
+
+6. Model Training (XGBoost + RF) -> scripts/train_model.py  
+
+7. Evaluation & Visualization -> notebooks/model_comparison.ipynb
 
 ## Installation
 ```bash
