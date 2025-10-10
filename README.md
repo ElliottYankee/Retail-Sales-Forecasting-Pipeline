@@ -62,9 +62,9 @@ retail-sales-forecasting/
 │   ├── randomforest_model.pkl  
 │   └── feature_columns.json  
 ├── .gitignore  
-├── config.py                            # Project configuration
-├── LICENSE.txt                          # Free use certification
-├── requirements.txt                     # Necessary libraries
+├── config.py                            # Project configuration  
+├── LICENSE.txt                          # Free use certification  
+├── requirements.txt                     # Necessary libraries  
 └── README.md                            # Project explanation
 
 ## Project Workflow
