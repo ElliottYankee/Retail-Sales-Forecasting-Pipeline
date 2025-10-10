@@ -11,6 +11,7 @@ An automated time series retail sales forecasting model with an ETL pipeline
 - [Technologies Used](#technologies-used)
 - [Model Performance & Data Limitations](#model-performance--data-limitations) 
 - [Dataset](#dataset)
+- [License](#license)
 
 ## Overview
 This project implements a complete machine learning pipeline for retail sales forecasting, including:
@@ -132,7 +133,6 @@ Real-world retail forecasting typically achieves:
 The synthetic dataset used in this project exhibits artificially predictable patterns, lacking the noise, irregularities, and complexity typically found in actual retail operations. This enables models to achieve near-perfect predictions that would be impossible with real data.
 
 ## Dataset
-
 This project uses the [Retail Store Inventory Forecasting Dataset](https://www.kaggle.com/datasets/anirudhchauhan/retail-store-inventory-forecasting-dataset) from Kaggle.
 
 **Dataset characteristics:**
@@ -149,3 +149,6 @@ This project uses the [Retail Store Inventory Forecasting Dataset](https://www.k
 - Applied data quality validations  
 
 **Note:** This is synthetic data created for educational purposes. See [Model Performance & Data Limitations](#model-performance--data-limitations) for details on how this affects results.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) file for details.
