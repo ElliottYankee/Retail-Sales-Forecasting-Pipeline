@@ -120,10 +120,17 @@ Infrastructure:
 
 ## Model Performance & Data Limitations
 ### Current Results
+Both models achieve exceptionally high performance metrics:  
+- **XGBoost**: MAE 2.41, RMSE 6.46, MAPE 2.11%, R² 0.999  
+- **RandomForest**: MAE 2.19, RMSE 6.24, MAPE 1.54%, R² 0.999  
 
-Both models achieve exceptionally high performance metrics:
-- **XGBoost**: MAPE 2.11%, R² 0.999
-- **RandomForest**: MAPE 1.54%, R² 0.999
+**Winner:** Random Forest (27% lower MAPE)  
+
+#### Key Findings
+- **Top Predictors:** Inventory Level, Inventory Days of Supply, Rolling Standard Deviation over 7 Days  
+- **Best Category for Predictions:** Groceries (most consistent patterns)  
+- **Model Insights:** Inventory features dominate - current stock availability is the largest determinant of future sales, suggesting poor inventory optimization
+- **Error Analysis:** Errors increase with sales volume (heteroscedasticity) but remain unbiased  
 
 ### Important Caveat
 **These results are unrealistically high due to synthetic data limitations.**
