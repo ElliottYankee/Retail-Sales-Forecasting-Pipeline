@@ -62,10 +62,10 @@ retail-sales-forecasting/
 │   ├── randomforest_model.pkl  
 │   └── feature_columns.json  
 ├── .gitignore  
-├── config.py  
-├── LICENSE.txt  
-├── requirements.txt  
-└── README.md  
+├── config.py                            # Project configuration
+├── LICENSE.txt                          # Free use certification
+├── requirements.txt                     # Necessary libraries
+└── README.md                            # Project explanation
 
 ## Project Workflow
 1. Raw Data (73,100 rows)
