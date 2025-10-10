@@ -12,6 +12,7 @@ An automated time series retail sales forecasting model with an ETL pipeline
 - [Technologies Used](#technologies-used)
 - [Model Performance & Data Limitations](#model-performance--data-limitations) 
 - [Dataset](#dataset)
+- [Potential Improvements](#potential-improvements)
 - [Contact](#contact)
 - [License](#license)
 
@@ -171,6 +172,15 @@ This project uses the [Retail Store Inventory Forecasting Dataset](https://www.k
 - Applied data quality validations  
 
 **Note:** This is synthetic data created for educational purposes. See [Model Performance & Data Limitations](#model-performance--data-limitations) for details on how this affects results.
+
+## Potential Improvements
+- Test on real retail datasets (Walmart, Rossmann store sales)
+- Implement LSTM/Prophet for comparison with traditional ML
+- Add confidence intervals to predictions
+- Create REST API for real-time forecasting (FastAPI)
+- Implement automated model retraining pipeline
+- Add feature: weather correlation analysis
+- Docker containerization for deployment
 
 ## Contact
 **Elliott Yankelevich**
