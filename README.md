@@ -11,6 +11,7 @@ An automated time series retail sales forecasting model with an ETL pipeline
 - [Technologies Used](#technologies-used)
 - [Model Performance & Data Limitations](#model-performance--data-limitations) 
 - [Dataset](#dataset)
+- [Contact](#contact)
 - [License](#license)
 
 ## Overview
@@ -149,6 +150,12 @@ This project uses the [Retail Store Inventory Forecasting Dataset](https://www.k
 - Applied data quality validations  
 
 **Note:** This is synthetic data created for educational purposes. See [Model Performance & Data Limitations](#model-performance--data-limitations) for details on how this affects results.
+
+## Contact
+**Elliott Yankelevich**
+- [Email](elliottyankelevich@gmail.com)
+- [LinkedIn](www.linkedin.com/in/elliott-yankelevich)
+- [GitHub](https://github.com/ElliottYankee)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) file for details.
