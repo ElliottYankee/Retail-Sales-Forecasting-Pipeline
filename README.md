@@ -3,12 +3,13 @@ An automated time series retail sales forecasting model with an ETL pipeline
 
 ## Table of Contents
 - [Overview](#overview)  
-- [Business Problem](#business-problem)  
+- [Business Problem](#business-problem)
+- [Project Structure](#project-structure)
 - [Installation](#installation)  
-- [Usage](#usage)  
-- [Model Performance & Data Limitations](#model-performance--data-limitations)  
+- [Usage](#usage)   
 - [What This Project Demonstrates](#what-this-project-demonstrates)
 - [Technologies Used](#technologies-used)
+- [Model Performance & Data Limitations](#model-performance--data-limitations) 
 - [Dataset](#dataset)
 
 ## Overview
@@ -92,22 +93,6 @@ python scripts/train_model.py
 jupyter notebook notebooks/model_comparison.ipynb
 ```
 
-
-## Model Performance & Data Limitations
-### Current Results
-
-Both models achieve exceptionally high performance metrics:
-- **XGBoost**: MAPE 2.11%, R² 0.999
-- **RandomForest**: MAPE 1.54%, R² 0.999
-
-### Important Caveat
-**These results are unrealistically high due to synthetic data limitations.**
-Real-world retail forecasting typically achieves:
-- MAPE: 10-20% (acceptable performance)
-- R²: 0.70-0.85 (good explanatory power)
-
-The synthetic dataset used in this project exhibits artificially predictable patterns without the noise, irregularities, and complexity present in actual retail operations. This allows models to achieve near-perfect predictions that are impossible with real data.
-
 ## What This Project Demonstrates  
 While the performance metrics are inflated, the project successfully showcases:  
 - End-to-end ML pipeline architecture  
@@ -130,6 +115,21 @@ Visualization:
 Infrastructure:
 - joblib (model persistence)
 - Git (version control)  
+
+## Model Performance & Data Limitations
+### Current Results
+
+Both models achieve exceptionally high performance metrics:
+- **XGBoost**: MAPE 2.11%, R² 0.999
+- **RandomForest**: MAPE 1.54%, R² 0.999
+
+### Important Caveat
+**These results are unrealistically high due to synthetic data limitations.**
+Real-world retail forecasting typically achieves:
+- MAPE: 10-20% (acceptable performance)
+- R²: 0.70-0.85 (good explanatory power)
+
+The synthetic dataset used in this project exhibits artificially predictable patterns, lacking the noise, irregularities, and complexity typically found in actual retail operations. This enables models to achieve near-perfect predictions that would be impossible with real data.
 
 ## Dataset
 
