@@ -153,7 +153,7 @@ This project uses the [Retail Store Inventory Forecasting Dataset](https://www.k
 
 ## Contact
 **Elliott Yankelevich**
-- [Email](mailto:elliottyankelevich@gmail.com)
+- elliottyankelevich@gmail.com
 - [LinkedIn](https://www.linkedin.com/in/elliott-yankelevich)
 - [GitHub](https://github.com/ElliottYankee)
 
